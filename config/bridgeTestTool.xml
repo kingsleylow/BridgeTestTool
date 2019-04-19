@@ -1,0 +1,31 @@
+<config> 
+  <conn>
+    <host>localhost:443</host>
+    <login>2019</login>
+    <passwd>qwe123</passwd>
+  </conn>
+  
+  <global>
+    <interval>2000</interval> <!-->milliseconds<-->
+	<interval-close>100</interval-close> <!-->milliseconds<-->
+	<interval-pending>20</interval-pending> <!-->minutes<-->
+    <test-type>0</test-type>    <!-->0: ; 1 open per sec; 2 close all orders; 3 closeperseconds<-->
+    <!-- <orderby>6661;6662;6663;6664;6665</orderby> -->
+	<orderby>861135;861136;861137;861138;861139;861140;861141;861142;861143;861144</orderby>
+	<order-nu>32154046</order-nu>
+    <thread-count>1</thread-count>
+	<orders>500</orders>
+    <symbols>AUDCAD;USDCHF;AUDCHF;AUDJPY;AUDNZD;AUDUSD;CADCHF;CADJPY;CHFJPY;EURAUD;EURCAD;EURCHF;EURGBP;EURJPY;EURNZD;EURUSD;GBPAUD;GBPCAD;GBPCHF;GBPJPY;GBPNZD;GBPUSD;NZDCAD;NZDCHF;NZDJPY;NZDUSD;USDCAD;USDCHF;USDCNH;USDHKD;USDJPY;XAUUSD;XAGUSD;XBRUSD;XNGUSD;XTIUSD;AUDSGD;EURPLN;USDMXN;USDPLN;USDSGD</symbols>
+	<!--><symbols>USDCHF</symbols><-->
+    <volumes>1</volumes>
+    <cmd>-1</cmd> <!-->0 buy, 1 sell, -1 random<-->
+	<pending-cmd>-1</pending-cmd> <!-->buy_limit=0, buy_stop=1, sell_limit=2, sell_stop=3, -1 random<-->
+	<duration>-1</duration>
+  </global>
+  
+  <general>
+    <thread-count></thread-count>
+    <thread1-symbols></thread1-symbols>
+    <thread1-volumes></thread1-volumes>
+  </general>
+</config>
