@@ -50,7 +50,7 @@ GenerateOrders::~GenerateOrders()
 }
 void GenerateOrders::exec(int login)
 {
-	srand(time(0));
+	/*srand(time(0));
 
 	int type = rand() % 2;
 	if (0 == type)
@@ -60,7 +60,7 @@ void GenerateOrders::exec(int login)
 	else if (1 == type)
 	{
 		generatePendingOrders(login);
-	}
+	}*/
 }
 
 void GenerateOrders::run()
@@ -76,7 +76,8 @@ void GenerateOrders::run()
 	int gThreads = m_logins.size();
 	for (int i = 0; i < gThreads; i++)
 	{
-		std::thread(&GenerateOrders::exec, this, std::stoi(m_logins[i])).detach();
+		std::thread(&GenerateOrders::generateCommonOrders, this, std::stoi(m_logins[i])).detach();
+		std::thread(&GenerateOrders::generatePendingOrders, this, std::stoi(m_logins[i])).detach();
 	}
 
 	std::thread(&GenerateOrders::closeOrders, this, -1, -1, -1).join();
@@ -146,7 +147,7 @@ void GenerateOrders::closeOrders(int login, int orderNo, double volume)
 }
 
 
-void GenerateOrders::generateCommonOrders(int login, openType type)
+void GenerateOrders::generateCommonOrders(int login/*, openType type*/)
 {
 	int total = std::stod(ReadConf::getInstance().getGlobalConf().find("orders")->second);
 	int vIndex = 0;
@@ -198,7 +199,7 @@ void GenerateOrders::generateCommonOrders(int login, openType type)
 	}
 }
 
-void GenerateOrders::generatePendingOrders(int login, pendingType type)
+void GenerateOrders::generatePendingOrders(int login/*, pendingType type*/)
 {
 	int total = std::stod(ReadConf::getInstance().getGlobalConf().find("orders")->second);
 	int vIndex = 0;
@@ -269,7 +270,7 @@ void GenerateOrders::generatePendingOrders(int login, pendingType type)
 		Logger::getInstance()->info("symbol:{},Order has been opened", m_symbols[vIndex%m_symbols.size()]);
 		vIndex++;
 		//std::this_thread::sleep_for(std::chrono::minutes(3));
-		std::this_thread::sleep_for(std::chrono::minutes(interval));
+		std::this_thread::sleep_for(std::chrono::seconds(interval));
 	}
 }
 

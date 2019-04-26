@@ -22,9 +22,9 @@ public:
 	void closeOrders(int login = -1, int orderNo = -1, double volume = 0);
 	
 	using openType = enum class Cmd { BUY, SELL};
-	void generateCommonOrders(int login, openType type = Cmd::BUY);          //
+	void generateCommonOrders(int login/*, openType type = Cmd::BUY*/);          //
 	using pendingType = enum class PendingType {BUY_LIMIT, BUY_STOP, SELLL_IMIT, SELL_STOP};
-	void generatePendingOrders(int login, pendingType type = PendingType::BUY_LIMIT);
+	void generatePendingOrders(int login/*, pendingType type = PendingType::BUY_LIMIT*/);
 	void generateSpecificOrder(int login, std::string symbol, double volume, openType type);
 	void generateOrdersPerSeconds(int login, openType);
 
