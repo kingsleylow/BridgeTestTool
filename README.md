@@ -1,3 +1,3 @@
 mkdir build  
 cd build  
-cmake ../ -DCMAKE_BUILD_TYPE=Debug -G"Visual studio 15 2017"
+cmake ../ -DCMAKE_BUILD_TYPE=Debug -G"Visual Studio 15 2017"
